@@ -1,18 +1,18 @@
-FROM samuelololol/docker-ubuntu1604-python:v0.1
+FROM samuelololol/docker-ubuntu1604-python:latest
 MAINTAINER samuelololol <samuelololol@gmail.com>
 
 RUN echo "deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu xenial main" > /etc/apt/sources.list.d//mozillateam-firefox.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CE49EC21
 RUN apt-get update
-RUN apt-get install -y firefox xvfb python-pip wget libxss1 \
+RUN apt-get install -y firefox xvfb python3-pip wget libxss1 \
                        libappindicator1 libindicator7 libnss3 \
                        libgconf-2-4 libpango1.0 xdg-utils \
                        build-essential chrpath libssl-dev libxft-dev \
                        libfreetype6 libfreetype6-dev \
                        libfontconfig1 libfontconfig1-dev \
                        fonts-liberation unzip &&\
-    pip install --upgrade pip &&\
-    pip install selenium PyVirtualDisplay xvfbwrapper &&\
+    python3 -m pip install --upgrade pip &&\
+    python3 -m pip install selenium PyVirtualDisplay xvfbwrapper &&\
     mkdir /app &&\
     cd /app &&\
     wget -N http://chromedriver.storage.googleapis.com/2.24/chromedriver_linux64.zip &&\
